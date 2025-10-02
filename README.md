@@ -21,13 +21,13 @@
 
 requirements.txt
 
-#Налаштування бази даних
+# Налаштування бази даних
 
 1.cd project_1<br>
 2.python manage.py migrate(якщо бази даних немає!)<br>
 3.python manage.py createsuperuser(опціонално, для створення адміна)<br>
 
-#Запуск
+# Запуск
 
 1.cd project_1<br>
 2.python manage.py runserver<br>
