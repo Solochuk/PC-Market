@@ -32,7 +32,7 @@ requirements.txt
 1.cd project_1<br>
 2.python manage.py runserver<br>
 
-Зображення:
+# Зображення:
 <img width="1920" height="958" alt="image" src="https://github.com/user-attachments/assets/0f907322-c107-4608-9b30-b3bbbc0467f5" />
 <img width="1918" height="955" alt="image" src="https://github.com/user-attachments/assets/1cb48c83-3f41-4857-8acb-06459ec1adad" />
 <img width="1914" height="956" alt="image" src="https://github.com/user-attachments/assets/28360500-dbdf-4c67-b778-6c67cacd2a0c" />
