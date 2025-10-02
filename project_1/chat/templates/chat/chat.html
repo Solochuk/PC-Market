@@ -1,0 +1,18 @@
+<h2>чат з менеджером</h2>
+
+<div style="border:1px solid #ccc; padding:10px; max-height:400px; overflow-y:auto;">
+    {% for message in messages %}
+    <p>
+        <b>{{ message.sender.username }}</b>: {{ message.content }}
+        <small style="color:gray;">({{ message.created_at|date:"H:i d-m-Y" }})</small>
+    </p>
+    {% empty %}
+    <p>Поки що немає повідомлень.</p>
+    {% endfor %}
+</div>
+
+<form method="post" style="margin-top:10px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Відправити</button>
+</form>

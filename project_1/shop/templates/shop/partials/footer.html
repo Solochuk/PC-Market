@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'shop/css/footer.css' %}">
+<footer class="site-footer">
+    <nav class="footer">
+        <p>&copy; {{ year|default:2025 }} Market. All rights reserved.</p>
+    <span class="footer-links">
+        <span class="logo-title">
+            <a href="/" class="home-button">Nome</a>
+            <img src="{% static 'shop/images/market.svg' %}" class="logo">
+        </span>
+        <span class="logo-title">
+            <a href="/about">About</a>
+            <img src="{% static 'shop/images/about.svg' %}" class="logo">
+        </span>
+</footer>

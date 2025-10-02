@@ -1,0 +1,38 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'shop/css/navigation.css' %}">
+<nav class="navigation">
+    <span class="logo-title">
+        <a href="/" class="home-button">Market</a>
+        <img src="{% static 'shop/images/market.svg' %}" class="home-logo">
+    </span>
+    <span class="nav-links">
+        {% if user.is_authenticated %}
+            <span class="logo-title">
+                <a href="{% url "carts:cart_view" %}">Кошик</a>
+                <img src="{% static 'shop/images/cart.svg' %}" class="logo">
+            </span>
+            <span class="logo-title">
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-button">
+                        Вихід
+                        <img src="{% static 'shop/images/logout.svg' %}" class="logo">
+                    </button>
+                </form>
+            </span>
+        {% else %}
+            <span class="logo-title">
+                <a href="{% url "carts:cart_view" %}">Кошик</a>
+                <img src="{% static 'shop/images/cart.svg' %}" class="logo">
+            </span>
+            <span class="logo-title">
+                <a href="/register">Зареєструватися</a>
+                <img src="{% static 'shop/images/registration.svg' %}" class="logo">
+            </span>
+            <span class="logo-title">
+                <a href="/accounts/login">Увійти</a>
+                <img src="{% static 'shop/images/login.svg' %}" class="logo">
+            </span>
+        {% endif %}
+    </span>
+</nav>

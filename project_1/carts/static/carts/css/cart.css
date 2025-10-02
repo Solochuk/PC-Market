@@ -1,0 +1,113 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+h1 {
+    margin: 20px 0;
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    font-weight: 600;
+}
+
+.cart-table {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 30px auto;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.cart-table thead {
+    background: #333;
+    color: #fff;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 14px 12px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.cart-table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+.cart-table tbody tr:hover {
+    background: #f1f1f1;
+}
+
+input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: right;
+    width: 60px;
+    font-size: 0.9rem;
+}
+
+.table_button {
+    padding: 6px 14px;
+    margin-left: 6px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.table_button:hover {
+    background-color: #501d40;
+    transform: scale(1.05);
+}
+
+p {
+    margin-top: 10px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+p strong {
+    color: #333;
+}
+
+.order {
+    display: block;
+    width: fit-content;
+    margin: 25px auto;
+    padding: 12px 20px;
+    background: #a70972;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.order:hover {
+    background: #501d40;
+    transform: scale(1.05);
+}

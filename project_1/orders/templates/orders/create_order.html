@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'orders/css/order.css' %}">
+    <title>Оформлення замовлення</title>
+</head>
+<body>
+    {% include 'shop/partials/navigation.html' %}
+    <div class="container">
+        <h2>Оформлення замовлення</h2>
+        {% if cart_items %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            {% for error in form.name.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.phone_number.label_tag }}
+            {{ form.phone_number }}
+            {% for error in form.phone_number.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.delivery_address.label_tag }}
+            {{ form.delivery_address }}
+            {% for error in form.delivery_address.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            <label>
+                {{ form.requires_delivery }} Потрібна доставка
+            </label>
+        </div>
+        <div class="form-group">
+            <label>
+                {{ form.payment_on_get }} Оплата при отриманні
+            </label>
+        </div>
+        <button type="submit">Підтвердити замовлення</button>
+    </form>
+    {% endif %}
+
+        {% if cart_items.exists %}
+        <div class="cart-items">
+            <h3>Ваш кошик:</h3>
+            {% for item in cart_items %}
+                <div class="cart-item">
+                    <span>{{ item.product.name }} (x{{ item.quantity }})</span>
+                    <span>{{ item.get_total_price }} ₴</span>
+                </div>
+            {% endfor %}
+            <div class="total">
+                Загалом: {{ cart_items.total_price }} ₴
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% include 'shop/partials/footer.html' %}
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ product.name }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+          integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'shop/css/product_page.css' %}">
+</head>
+<body>
+    {% include 'shop/partials/navigation.html' %}
+    <main class="site-main">
+        <h1 class="name">{{ product.name }}</h1>
+        <div class="product-content">
+            <div class="thumbnails">
+                {% for image in product.images.all %}
+                    <img src="{{ image.image_file.url }}" alt="Thumbnail {{ forloop.counter }}" onclick="changeMainImage(this)">
+                {% endfor %}
+            </div>
+
+            <img class="main-image" id="mainImage" src="{{ product.images.all.0.image_file.url }}" alt="{{ product.name }}">
+
+            <div class="info">
+                <p class="price"><strong>Price:</strong> {{ product.price }}₴</p>
+                <form method="post" action="{% url 'carts:cart_add' product.slug %}">
+                    {% csrf_token %}
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
+                <p class="description">{{ product.description }}</p>
+            </div>
+        </div>
+    </main>
+    {% include 'shop/partials/footer.html' %}
+
+    <script>
+        function changeMainImage(thumb) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = thumb.src;
+        }
+    </script>
+</body>
+</html>

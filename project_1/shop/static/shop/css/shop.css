@@ -1,0 +1,161 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.site-main {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 250px;
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    height: fit-content;
+}
+
+.sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-item {
+    margin: 8px 0;
+}
+
+.category-item a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 6px 10px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.category-item a:hover {
+    background: #ddd;
+}
+
+.category-item a.active {
+    background: #007bff;
+    color: white;
+}
+
+.products_container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.product_item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.product_item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.product_item img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.product_item img:hover {
+    transform: scale(1.05);
+}
+
+.product_item h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #333;
+}
+
+.product_item p {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 8px 0;
+}
+
+.product_item strong {
+    color: #a70972ff;
+    font-size: 1rem;
+}
+
+.product_item button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 14px;
+    background-color: #a70972ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.product_item button:hover {
+    background-color: #501d40ff;
+    transform: scale(1.05);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.pagination a, .pagination strong {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+}
+
+.pagination strong {
+    background-color: #a70972ff;
+    color: white;
+}
+
+
+@media (max-width: 768px) {
+    .site-main {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+}

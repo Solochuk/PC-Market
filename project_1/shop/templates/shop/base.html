@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Market - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+        integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'shop/css/shop.css' %}">
+</head>
+<body>
+    {% include 'shop/partials/navigation.html' %}
+    <main class="site-main">
+        <aside class="sidebar">
+            <h2>Категорії товарів:</h2>
+            <ul class="category-list">
+                {% for category in categories %}
+                    <li class="category-item">
+                        <a href="{% url "shop:catalog_page" category.slug %}">{{ category.name }}</a>
+                    </li>
+                {% endfor %}
+                <li class="category-item"><a href="{% url "shop:main_page"%}">Всі товари</a></li>
+            </ul>
+        </aside>
+        <div class="products_container">
+            {% for product in data %}
+            <div class="product_item">
+                <a href="{% url 'shop:product_page' product.slug %}">
+                    {% if product.images.all %}
+                        <img src="{{ product.images.all.0.image_file.url }}" alt="{{ product.name }}">
+                    {% else %}
+                        <img src="{% static 'shop/images/no-image.png' %}" alt="No image">
+                    {% endif %}
+                </a>
+                <h3>{{ product.name }}</h3>
+                <p>
+                    {% if product.description|length > 200 %}
+                        {{ product.description|truncatewords:15 }}
+                    {% else %}
+                        {{ product.description }}
+                    {% endif %}
+                </p>
+                <p><strong>Price:</strong> {{ product.price }}₴</p>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+    <div class="pagination">
+        {% if data.has_previous %}
+            <a href="?page={{ data.previous_page_number }}">⬅ Попередня</a>
+        {% endif %}
+
+        {% for num in data.paginator.page_range %}
+            {% if data.number == num %}
+                <strong>{{ num }}</strong>
+            {% else %}
+                <a href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if data.has_next %}
+            <a href="?page={{ data.next_page_number }}">Наступна ➡</a>
+        {% endif %}
+    </div>
+    {% include 'shop/partials/footer.html' %}
+</body>
+</html>

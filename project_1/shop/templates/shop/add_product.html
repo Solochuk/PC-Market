@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <metda charset="UTF-8">
+    <title>{% block title %}Market - Add product{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+        integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{% static 'Market2/css/apend.css' %}">
+<head>
+<body>
+    {% if success %}
+        <p style="color: green;">{% block success %}Add is success!{% endblock %}</p>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <label for="id_product_images">Product images:</label>
+        <input type="file" name="product_images" multiple>
+
+        <button type="submit" name={% block button_name %}"add"{% endblock %}>{% block submit_button %}Add{% endblock %}</button>
+        {% block delet_button %}{% endblock %}
+    </form>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<h2>Список чатів</h2>
+<ul>
+    {% for chat in chats %}
+    <li>
+        <a href="{% url 'admin_chat_detail' chat.id %}">
+        Чат з {{ chat.user.username }} (створено {{ chat.created_at|date:"d-m-Y H:i" }})
+        </a>
+    </li>
+    {% empty %}
+    <li>Немає активних чатів.</li>
+    {% endfor %}
+</ul>

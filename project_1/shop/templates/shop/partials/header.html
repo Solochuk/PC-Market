@@ -1,0 +1,38 @@
+    <header>
+      <nav>
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="">Shop</a></li>
+          <li><a href="">Contact Us</a></li>
+          <li><a href="">Add Review</a></li>
+          {% if user.is_staff == True %}
+            <li>
+              <a class="nav-link" href="http://127.0.0.1:8000/admin/">Admin</a>
+            </li>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <li>
+          <form method="post" action="" style="display: inline;">
+            {% csrf_token %}
+            <a href="#" class="nav-link" onclick="this.closest('form').submit(); return false;">Logout</a>
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert">{{ message }}</div>
+              {% endfor %}
+            {% endif %}
+          </form>
+        </li>
+        <li>
+          <a class="nav-link" href="#">Welcome, {{user.username}}</a>
+        </li>
+        {% else %}
+        <li>
+          <a class="nav-link" href="">Login</a>
+        </li>
+        <li>
+          <a class="nav-link" href="">Register</a>
+        </li>
+        {% endif %}
+        </ul>
+      </nav>
+    </header>

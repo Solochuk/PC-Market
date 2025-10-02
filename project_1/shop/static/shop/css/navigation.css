@@ -1,0 +1,65 @@
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f8f8f8;
+    }
+
+.navigation .home-button {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.6em;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+.navigation .home-button:hover {
+    color: #501d40;
+}
+
+.nav-links {
+    display: flex;
+    gap: 12px;
+}
+
+.navigation img.home-logo {
+    height: 35px;
+    width: 35px;
+    }
+
+.navigation img.logo {
+    height: 20px;
+    width: 20px;
+    }
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+.logout-button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.logout-button:hover {
+    color: #501d40;
+}
+
+.logo-title a{
+    text-decoration: none;
+    color: #333;
+    transition: color 0.2s;
+}
+
+.logo-title a:hover {
+    color: #501d40;
+}

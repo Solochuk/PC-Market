@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Success</title>
+    <link rel="stylesheet" href="{% static 'orders/css/order.css' %}">
+</head>
+<body>
+    {% include 'shop/partials/navigation.html' %}
+    <div class="container">
+        <h1>Дякуємо за ваше замовлення!</h1>
+        <p>Твоє замовлення успішно оформленно і знаходиться в процесі опрацювання! Ми звяжемося з вами найближчим часом</p>
+        <a href="{% url 'shop:main_page' %}">Повернутися на головну</a>
+    </div>
+    {% include 'shop/partials/footer.html' %}
+</body>
+</html>
